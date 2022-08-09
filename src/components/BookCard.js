@@ -1,19 +1,22 @@
+import { Link } from "react-router-dom";
 import ShelfDropdown from "./shelfDropdown";
 
 const BookCard = ({ book, genres, onChangeShelf }) => {
   return (
     <div className="book">
       <div className="book-top">
-        <div
-          className="book-cover"
-          style={{
-            width: 128,
-            height: 193,
-            backgroundImage: `url(${
-              book.imageLinks ? book.imageLinks.smallThumbnail : ""
-            })`,
-          }}
-        ></div>
+        <Link to={`/books/${book.id}`}>
+          <div
+            className="book-cover"
+            style={{
+              width: 128,
+              height: 193,
+              backgroundImage: `url(${
+                book.imageLinks ? book.imageLinks.smallThumbnail : ""
+              })`,
+            }}
+          ></div>
+        </Link>
         <div className="book-shelf-changer">
           <ShelfDropdown
             genres={genres}

@@ -15,8 +15,6 @@ const Search = ({ onChangeShelf, genres, myBooks }) => {
     const searchForBooks = async () => {
       if (query !== "") {
         const newBooks = await search(query.toLowerCase().trim());
-        console.log("query: ", query.toLowerCase().trim());
-        console.log(newBooks);
         if (!newBooks.error) {
           newBooks.map((newBook) =>
             myBooks.forEach((book) =>

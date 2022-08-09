@@ -5,7 +5,9 @@ const ListBooks = ({ allBooks, genre, genres, header, onChangeShelf }) => {
 
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{header}</h2>
+      <h2 className="bookshelf-title">
+        {header} ({filterdBooks.length})
+      </h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
           {filterdBooks.map((book) => (

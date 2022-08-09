@@ -5,9 +5,9 @@ import ListBooks from "./ListBooks";
 const Shelf = ({ allBooks, genres, onChangeShelf }) => {
   return (
     <div className="list-books">
-      <div className="list-books-title">
+      {/* <div className="list-books-title">
         <h1>MyReads</h1>
-      </div>
+      </div> */}
       <div className="list-books-content">
         <div>
           {genres.map((genre) => (

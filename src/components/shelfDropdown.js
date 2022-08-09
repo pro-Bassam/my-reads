@@ -6,7 +6,6 @@ const ShelfDropdown = ({ book, genres, onChangeShelf }) => {
 
   const handlChange = (event) => {
     const shelf = event.currentTarget.value;
-    console.log(book);
     setCurrentShelf(shelf);
     onChangeShelf(book, shelf);
   };

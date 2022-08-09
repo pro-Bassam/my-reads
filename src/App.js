@@ -1,11 +1,13 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import { getAll } from "./service/BooksAPI";
+import { Switch, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import Search from "./components/Search";
 import Shelf from "./components/Shelf";
+import { update, getAll } from "./service/BooksAPI";
 import { getGenres } from "./service/fakeGenreService";
-import { update } from "./service/BooksAPI";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import BookForm from "./components/BookForm";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -13,7 +15,6 @@ function App() {
 
   const handelChangeShelf = async (book, shelf) => {
     const res = await update(book, shelf);
-    console.log(res);
   };
 
   useEffect(() => {
@@ -28,28 +29,32 @@ function App() {
 
   return (
     <div className="app">
-      <Routes>
+      <NavBar />
+      <Switch>
         <Route
           path="/search"
-          element={
+          render={(props) => (
             <Search
               genres={genres}
               onChangeShelf={handelChangeShelf}
               myBooks={books}
+              {...props}
             />
-          }
+          )}
         />
+        <Route path="/books/:id" component={BookForm} />
         <Route
           path="/"
-          element={
+          render={(props) => (
             <Shelf
               allBooks={books}
               genres={genres}
               onChangeShelf={handelChangeShelf}
+              {...props}
             />
-          }
+          )}
         />
-      </Routes>
+      </Switch>
     </div>
   );
 }
